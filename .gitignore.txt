@@ -1,0 +1,2 @@
+# data을 올리지 않기 위함
+Reverse Distillation Project/data
