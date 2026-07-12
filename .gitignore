@@ -5,6 +5,6 @@
 
 # chache
 *.pyc
-AI_Robot_Practice/.ipynb_checkpoints
-AI_Robot_Practice/__pycache__
-AI_Robot_Practice/checkpoints
+RD_model/.ipynb_checkpoints
+RD_model/__pycache__
+RD_model/checkpoints
