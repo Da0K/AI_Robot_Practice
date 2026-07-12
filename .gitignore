@@ -1,4 +1,10 @@
-# data을 올리지 않기 위함
+# data
 *.png
 *.jpg
 *.jpeg
+
+# chache
+*.pyc
+AI_Robot_Practice/.ipynb_checkpoints
+AI_Robot_Practice/__pycache__
+AI_Robot_Practice/checkpoints
