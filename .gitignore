@@ -5,6 +5,6 @@
 
 # chache
 *.pyc
-RD_model/.ipynb_checkpoints
-RD_model/__pycache__
-RD_model/checkpoints
+# RD_model/.ipynb_checkpoints
+# RD_model/__pycache__
+# RD_model/checkpoints
