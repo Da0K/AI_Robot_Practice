@@ -8,3 +8,7 @@
 **/.ipynb_checkpoints
 **/__pycache__
 **/checkpoints
+
+# ignore doosan-robot2
+# Go to folk project
+doosan_robot2/
