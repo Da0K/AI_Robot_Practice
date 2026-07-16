@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['cube']
+
+roboflow:
+  workspace: s-workspace-zfzrj
+  project: cube-gvf74
+  version: dataset
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/s-workspace-zfzrj/cube-gvf74/dataset/dataset

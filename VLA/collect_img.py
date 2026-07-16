@@ -4,12 +4,12 @@ import numpy as np
 
 from camera import RealSenseD435
 
-output_dir = "/home/da0/AI_ROBOT/VLA/data"
+output_dir = "/home/da0/data"
 
 os.makedirs(output_dir, exist_ok=True)
 os.makedirs(f'{output_dir}/color', exist_ok=True)
 os.makedirs(f'{output_dir}/depth', exist_ok=True)
-
+    
 cam = RealSenseD435(color_resolution=720, depth_mode="720P")
 
 count = 0
