@@ -12,10 +12,12 @@ from test_yolo import detect_cubes_once
 model_path = "/home/da0/AI_Robot_Practice/VLA/best.pt"
 model = YOLO(model_path)
 
-extrinsic_matrix = np.array([[-9.994466382660912585e-01, 3.148521209594088224e-03, 3.311350287725785269e-02, -5.524691072389610325e-01],
-[-6.226084404233151945e-03, 9.602076644630809232e-01, -2.792176158113003348e-01, 2.309949336075064752e-01],
-[-3.267496184543744464e-02, -2.792692749311108114e-01, -9.596567193261614781e-01, 3.711441810516031281e-01],
-[0.000000000000000000e+00, 0.000000000000000000e+00, 0.000000000000000000e+00, 1.000000000000000000e+00]], dtype=np.float32)
+# extrinsic_matrix = np.array([[-9.994466382660912585e-01, 3.148521209594088224e-03, 3.311350287725785269e-02, -5.524691072389610325e-01],
+# [-6.226084404233151945e-03, 9.602076644630809232e-01, -2.792176158113003348e-01, 2.309949336075064752e-01],
+# [-3.267496184543744464e-02, -2.792692749311108114e-01, -9.596567193261614781e-01, 3.711441810516031281e-01],
+# [0.000000000000000000e+00, 0.000000000000000000e+00, 0.000000000000000000e+00, 1.000000000000000000e+00]], dtype=np.float32)
+
+extrinsic_matrix = np.loadtxt("/home/da0/AI_Robot_Practice/doosan_robot2/images/camera_pose.txt", dtype=np.float32)
 
 task_home_joint = [-180.00, 0.00, 90.00, 0.00, 90.00, 60.00]
 
@@ -44,7 +46,10 @@ def main(args=None):
     
 
     for i in range(len(cube_list)):
-        robot.move_j(task_home_joint)
+        if i == 0:
+            robot.move_j(task_home_joint)
+        else:
+            robot.move_j(grasp_ready_pose)
         robot.release()
 
         center_x = cube_list[i][0]
@@ -69,7 +74,7 @@ def main(args=None):
 
         robot_x = world_coordinate[0] * 1000 # meter to mm
         robot_y = world_coordinate[1] * 1000 # meter to mm
-        robot_z = -180
+        robot_z = -182
 
         # Get joint value
         prepare_gripper_yaw = list(get_current_pose(0))
@@ -89,7 +94,7 @@ def main(args=None):
 
         # Move to pick
         grasp_pose = grasp_ready_pose.copy()
-        grasp_pose[2] = -220 # Check this height doesn't collision.
+        grasp_pose[2] = -232 # Check this height doesn't collision.
 
         task_compliance_ctrl(stx=stiffness)
 
@@ -125,13 +130,15 @@ def main(args=None):
             robot.grasp()
             robot.move_l(grasp_ready_pose)
 
+        # Place the cube
         if anomaly_status:
-            # Place cube
+            # desk left side
             place_pose = grasp_ready_pose.copy()
             place_pose[0] = -425
             place_pose[1] = -300
         
         else:
+            # desk right side
             place_pose = grasp_ready_pose.copy()
             place_pose[0] = -640
             place_pose[1] = -300
