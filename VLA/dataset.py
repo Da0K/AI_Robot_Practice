@@ -1,3 +1,5 @@
+# For Training RD Model
+
 from torchvision import transforms
 from PIL import Image
 import os

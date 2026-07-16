@@ -134,7 +134,7 @@ def main(args=None):
         if anomaly_status:
             # desk left side
             place_pose = grasp_ready_pose.copy()
-            place_pose[0] = -425
+            place_pose[0] = -430
             place_pose[1] = -300
         
         else:

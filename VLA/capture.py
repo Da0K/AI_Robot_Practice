@@ -1,4 +1,4 @@
-# copy of other files's camera.py
+# copy of other files's caoture.py
 
 import cv2
 

@@ -1,3 +1,5 @@
+# To make dataset -> cropped dataset
+
 import os
 import cv2
 import numpy as np

@@ -12,7 +12,7 @@ def detect_cubes_once(camera, model):
 
     # Generally Use conf=0.6, but I don't use ANOMALY CUBE in cube detector dataset
     # SO, I use low conf for figure out
-    results = model(color_image, conf=0.15, verbose=False)
+    results = model(color_image, conf=0.1, verbose=False)
     
     # Create image for visualization (for debug)
     annotated_frame = results[0].plot()
@@ -23,7 +23,7 @@ def detect_cubes_once(camera, model):
 
     # best threshold in 0.3 ~ 0.8
     # check in RD_Tester.ipynb
-    detector = AnomalyDetector(_class_="cube", threshold=0.5)
+    detector = AnomalyDetector(_class_="cube", threshold=0.55)
 
     # Calculate center point, distance, and rotation angle based on segmentation mask information
     if results[0].masks is not None:

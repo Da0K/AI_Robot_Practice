@@ -1,3 +1,5 @@
+# To use RealSenseD435
+
 import pyrealsense2 as rs
 import numpy as np
 
